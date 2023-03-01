@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Atribut / Directive pada Alpinejs</title>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+	<h1>Atribut / Directive pada Alpinejs</h1>
+
+	<h2>x-data</h2>
+
+	<p>Berfungsi sebagai inisiasi komponen Alpine, Selain itu mendeklarasi data pada komponen</p>
+
+	<!-- x-data tanpa nilai -->
+	<div x-data>
+		<p x-text=" 'ini adalah komponen Alpine' "></p>
+	</div>
+
+	<!-- x-data tanpa nilai -->
+	<div x-data="data1">
+		<p x-text="teks1"></p>
+		<p x-text="teks2"></p>
+		<p x-text="teks3"></p> <!-- error -->
+
+	</div>
+
+	<!-- x-data bersarang -->
+	<div x-data="{varA: 'a'}">
+		<div x-data="{varB: 'B'}">
+			<p x-text="varB"></p>
+		</div>
+	</div>
+
+	<!-- x-init -->
+	<p>Berfungsi untuk menjalankan kode JavaScript pada saat komponen pertama kali diinitialisasi</p>
+
+	<div x-data x-init="alert('init')"></div>
+
+	<div x-data>
+		<p x-init="$el.style.color = 'blue' ">Contoh untuk x-init</p>
+	</div>
+
+
+	<h2>x-show</h2>
+
+	<p>Berfungsi untuk menampilkan element HTML jija nilai adalah true</p>
+
+	<div x-data="{isShow: false}">
+		<h3 x-show="isShow"> Ini adalah contoh x-show</h3>
+		<button x-on:click="isShow = !isShow" x-text="isShow ? 'sembunyikan' : 'Tampilakan' ">Tampilkan</button>
+	</div>
+
+
+	<script type="text/javascript">
+		const data1 = {
+			teks1: 'Ini adalah komponen alpine',
+			teks2: 'halo dunia'
+		}
+
+		// method
+		// teks3(){
+		// 	return 'ini adalah method Alpine';
+		// }
+
+	</script>
+</body>
+</html>
